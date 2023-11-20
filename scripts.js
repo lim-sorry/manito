@@ -24,9 +24,9 @@ function generateDictionary() {
     Math.seedrandom(code);
     for (var i=dArray.length-1; i>-1; i--){
         if (namesArray[i][0] == name || namesArray[i][1] == name){
-            console.log(name);
+            //console.log(name);
             if (code == dArray[i]){
-                console.log('seed');
+                //console.log('seed');
                 Math.seedrandom(0);
             }
             break;
