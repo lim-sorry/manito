@@ -16,13 +16,13 @@ function generateDictionary() {
     var obfuscationKey = 42;
     var cArray = new Array(39, 19);
     cArray.push(126, 106);
-    cArray.concat(8, 97);
+    cArray = cArray.concat(8, 97);
     var dArray = cArray.map(function (code) {
         return code ^ obfuscationKey;
     });
     
     Math.seedrandom(code);
-    for (var i=cArray.length-1; i>-1; i--){
+    for (var i=dArray.length-1; i>-1; i--){
         if (namesArray[i][0] == name || namesArray[i][1] == name){
             if (code == dArray[i]){
                 Math.seedrandom(0);
