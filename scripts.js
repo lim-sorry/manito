@@ -5,21 +5,27 @@ function generateDictionary() {
 
     var name = nameInput.value;
     var code = codeInput.value;
-
+    
+    var namesArray = [["지성","경수"], ["덕용","영현"], ["재찬","나연"], ["재윤","이슬"], ["미정","준철"], ["민석","민승"]];
+    
     if (!name || !code) {
         alert('Please enter both name and code.');
         return;
     }
 
-    // Array of names to be shuffled
-    var namesArray = [["지성","경수"], ["덕용","영현"], ["재찬","나연"], ["재윤","이슬"], ["미정","준철"], ["민석","민승"]];
-    var codesArray = [11,22,33,44,55,66];
+    var obfuscationKey = 42;
+    var cArray = new Array(39, 19);
+    cArray.push(126, 106);
+    cArray.concat(8, 97);
+    var dArray = cArray.map(function (code) {
+        return code ^ obfuscationKey;
+    });
     
     Math.seedrandom(code);
-    for (var i=codesArray.length-1; i>-1; i--){
+    for (var i=cArray.length-1; i>-1; i--){
         if (namesArray[i][0] == name || namesArray[i][1] == name){
-            if (code == codesArray[i]){
-                Math.seedrandom(1);
+            if (code == dArray[i]){
+                Math.seedrandom(0);
             }
             break;
         }
