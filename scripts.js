@@ -13,10 +13,10 @@ function generateDictionary() {
         return;
     }
 
-    var obfuscationKey = 42;
+    var obfuscationKey = 41;
     var cArray = new Array(39, 19);
-    cArray.push(126, 106);
-    cArray = cArray.concat(8, 97);
+    cArray.push(12, 10);
+    cArray = cArray.concat(80, 97);
     var dArray = cArray.map(function (code) {
         return code ^ obfuscationKey;
     });
