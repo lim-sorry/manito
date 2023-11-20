@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Dictionary Generator</title>
+    <title>Random Manito Generator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script src="scripts.js" defer></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,65 +23,17 @@
     </style>
 </head>
 <body>
-    <h2>Random Dictionary Generator</h2>
+    <h2>Random Manito Generator</h2>
+    <p>.</p>
+    <p>이름과 코드가 일치하지 않으면 랜덤한 결과가 나옵니다.</p>
     <label for="name">Name:</label>
     <input type="text" id="name" placeholder="Enter your name">
 
-    <label for="seed">Seed:</label>
-    <input type="text" id="seed" placeholder="Enter random seed (e.g., 1)">
+    <label for="code">Code:</label>
+    <input type="text" id="code" placeholder="Enter the passcode">
 
-    <button onclick="generateDictionary()">Generate Dictionary</button>
+    <button onclick="generateDictionary()">Get</button>
 
     <div id="result"></div>
-
-    <script>
-        function generateDictionary() {
-            var nameInput = document.getElementById('name');
-            var seedInput = document.getElementById('seed');
-            var resultDiv = document.getElementById('result');
-
-            var name = nameInput.value;
-            var seed = seedInput.value;
-
-            if (!name || !seed) {
-                alert('Please enter both name and seed.');
-                return;
-            }
-
-            // Array of names to be shuffled
-            var namesArray = ["지성", "덕용", "영현", "재찬"];
-
-            // Use seedrandom for deterministic shuffling based on the seed
-            Math.seedrandom(seed);
-            var shuffledArray = shuffleArray(namesArray);
-
-            // Create a dictionary with the shuffled names
-            var dictionary = {};
-            for (var i = 0; i < shuffledArray.length; i++) {
-                // Check if the key and value are the same; if so, reshuffle
-                while (name === shuffledArray[i]) {
-                    shuffledArray = shuffleArray(namesArray);
-                }
-                dictionary[name] = shuffledArray[i];
-            }
-
-            // Display the result
-            resultDiv.innerHTML = '<p>Dictionary for ' + name + ': ' + JSON.stringify(dictionary) + '</p>';
-        }
-
-        function shuffleArray(array) {
-            var shuffledArray = array.slice(); // Create a copy of the array
-
-            // Fisher-Yates shuffle algorithm
-            for (var i = shuffledArray.length - 1; i > 0; i--) {
-                var j = Math.floor(Math.random() * (i + 1));
-                var temp = shuffledArray[i];
-                shuffledArray[i] = shuffledArray[j];
-                shuffledArray[j] = temp;
-            }
-
-            return shuffledArray;
-        }
-    </script>
 </body>
 </html>
