@@ -13,10 +13,10 @@ function generateDictionary() {
         return;
     }
 
-    var obfuscationKey = 41;
+    var obfuscationKey = 20;
     var cArray = new Array(39, 19);
-    cArray.push(12, 10);
-    cArray = cArray.concat(80, 97);
+    cArray.push(126, 106);
+    cArray = cArray.concat(77, 97);
     var dArray = cArray.map(function (code) {
         return code ^ obfuscationKey;
     });
@@ -26,7 +26,7 @@ function generateDictionary() {
         if (namesArray[i][0] == name || namesArray[i][1] == name){
             //console.log(name);
             if (code == dArray[i]){
-                //console.log('seed');
+                console.log('seed');
                 Math.seedrandom(0);
             }
             break;
@@ -51,7 +51,7 @@ function generateDictionary() {
     names1.push(namesArray[namesArray.length-1][0]);
     names2.push(namesArray[namesArray.length-1][1]);
     var names = names1.concat(names2, names1[0]);
-    console.log(names);
+    //console.log(names);
 
     manito = names[names.findIndex((elem) => elem == name) + 1];
     
