@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Manito Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
     <script src="scripts.js" defer></script>
     <style>
@@ -23,16 +27,25 @@
     </style>
 </head>
 <body>
-    <h2>Random Manito Generator V1</h2>
-    <p>이름과 코드가 일치하지 않으면 무작위 결과가 나옵니다.</p>
-    <label for="name">Name:</label>
-    <input type="text" id="name" placeholder="Enter your name">
+    <div class="container">
+        <h2 class="mt-4">Random Manito Generator V1</h2>
+        <p>이름과 코드가 일치하지 않으면 무작위 결과가 나옵니다.</p>
 
-    <label for="code">Code:</label>
-    <input type="text" id="code" placeholder="Enter the passcode">
+        <form>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            </div>
 
-    <button onclick="generateDictionary()">Get</button>
+            <div class="form-group">
+                <label for="code">Code:</label>
+                <input type="text" class="form-control" id="code" placeholder="Enter the passcode">
+            </div>
 
-    <div id="result"></div>
+            <button type="button" class="btn btn-primary" onclick="generateDictionary()">Get</button>
+        </form>
+
+        <div id="result" class="mt-4"></div>
+    </div>
 </body>
 </html>
