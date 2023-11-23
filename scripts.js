@@ -1,11 +1,10 @@
 function generateDictionary() {
     var nameInput = document.getElementById('name');
     var codeInput = document.getElementById('code');
-    var resultDiv = document.getElementById('result');
-
+    
     var name = nameInput.value;
     var code = codeInput.value;
-    
+
     var namesArray = [["지성","경수"], ["덕용","영현"], ["재찬","나연"], ["재윤","이슬"], ["미정","준철"], ["민석","민승"]];
     
     if (!name || !code) {
@@ -26,13 +25,41 @@ function generateDictionary() {
         if (namesArray[i][0] == name || namesArray[i][1] == name){
             //console.log(name);
             if (code == dArray[i]){
-                console.log('seed');
-                Math.seedrandom(0);
+                var sd = dArray.reduce((a,b)=>a+b, 0);
+                Math.seedrandom(sd);
+                //console.log(sd);
+                resultExtract(namesArray, name);
+            } else {
+                alert('Please enter right code for name.');
             }
             break;
         }
+    }    
+
+}
+
+function shuffleArray(array) {
+    var shuffledArray = array.slice(); // Create a copy of the array
+
+    // Fisher-Yates shuffle algorithm
+    for (var i = shuffledArray.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = shuffledArray[i];
+        shuffledArray[i] = shuffledArray[j];
+        shuffledArray[j] = temp;
     }
-    
+
+    return shuffledArray;
+}
+
+function resultExtract(namesArray, name) {
+    var resultDiv = document.getElementById('result');
+
+    for (var i=0; i<namesArray.length; i++) {
+        if (name == namesArray[i][0]) var name2 = namesArray[i][1];
+        else if (name == namesArray[i][1]) var name2 = namesArray[i][0];
+    }    
+
     var names1 = [];
     var names2 = [];
     for (var i=0; i<namesArray.length-1; i++) {
@@ -53,22 +80,9 @@ function generateDictionary() {
     var names = names1.concat(names2, names1[0]);
     //console.log(names);
 
-    manito = names[names.findIndex((elem) => elem == name) + 1];
+    var manito = names[names.findIndex((elem) => elem == name) + 1];
+    var manito2 = names[names.findIndex((elem) => elem == name2) + 1];
     
     // Display the result
-    resultDiv.innerHTML = '<p>Manito for ' + name + ' is ' + manito + ' !!!</p>';
-}
-
-function shuffleArray(array) {
-    var shuffledArray = array.slice(); // Create a copy of the array
-
-    // Fisher-Yates shuffle algorithm
-    for (var i = shuffledArray.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = shuffledArray[i];
-        shuffledArray[i] = shuffledArray[j];
-        shuffledArray[j] = temp;
-    }
-
-    return shuffledArray;
+    resultDiv.innerHTML = `<p>${name} > ${manito}\t&\t${name2} > ${manito2}</p>`;
 }
