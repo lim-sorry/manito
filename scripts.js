@@ -13,7 +13,7 @@ function generateDictionary() {
     }
 
     var obfuscationKey = 167;
-    var cArray = [57152,81238,15784,45843,34561,94255,18421,67813,35464]
+    var cArray = [571521,812382,157843,458434,345615,942556,184217,678138,354649]
     var dArray = cArray.map(function (code) {
         var key = code * obfuscationKey ^ obfuscationKey;
         while (key > 10000) {
