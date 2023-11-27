@@ -12,7 +12,7 @@ function generateDictionary() {
         return;
     }
 
-    var obfuscationKey = 761;
+    var obfuscationKey = 23;
     var cArray = [571521,812382,157843,458434,345615,942556,184217,678138,354649]
     var dArray = cArray.map(function (code) {
         var key = code * obfuscationKey ^ obfuscationKey;
@@ -29,7 +29,7 @@ function generateDictionary() {
                 if (code == dArray[i]){
                     var sd = dArray.reduce((a,b)=>a+b, 0);
                     Math.seedrandom(sd);
-                    //console.log(sd);
+                    console.log(sd);
                     resultExtract(namesArray, name);
                 } else {
                     alert('Please enter right code for name.');
