@@ -12,7 +12,7 @@ function generateDictionary() {
         return;
     }
 
-    var obfuscationKey = 167;
+    var obfuscationKey = 761;
     var cArray = [571521,812382,157843,458434,345615,942556,184217,678138,354649]
     var dArray = cArray.map(function (code) {
         var key = code * obfuscationKey ^ obfuscationKey;
